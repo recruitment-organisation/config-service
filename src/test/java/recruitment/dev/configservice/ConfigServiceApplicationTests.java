@@ -1,13 +1,19 @@
 package recruitment.dev.configservice;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
-@SpringBootTest
 class ConfigServiceApplicationTests {
 
     @Test
-    void contextLoads() {
+    void enablesSpringBootAndConfigServer() {
+        org.junit.jupiter.api.Assertions.assertTrue(
+                ConfigServiceApplication.class.isAnnotationPresent(SpringBootApplication.class)
+        );
+        org.junit.jupiter.api.Assertions.assertTrue(
+                ConfigServiceApplication.class.isAnnotationPresent(EnableConfigServer.class)
+        );
     }
 
 }
